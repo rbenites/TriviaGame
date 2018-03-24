@@ -1,4 +1,10 @@
 /*jshint esversion: 6 */
+//Global variables
+var win = 0;
+var loss = 0;
+var totalNumQs = 8;
+var counter;
+
 
 window.onload = function () {
     //8 random questions with answers
@@ -45,7 +51,10 @@ window.onload = function () {
         }]*/
     };
     console.log(questions.question1[0].question);
+
+//populate guesses to chose from
     for (i = 0; i < 4; i++) {
+        
         console.log(questions.question1[0].guess[i]);
     }
     console.log(questions.question1[0].answer);
@@ -64,23 +73,33 @@ window.onload = function () {
         //if users selects correct answer Alert they guessed correctly else alert incorrect and show correct answer
         if (this.id == '4') {
             alert("correct " + questions.question1[0].guess[3]);
+            win++;
+
         } else {
             alert("incorrect " + questions.question1[0].guess[0]);
+            loss++;
         }
     });
     //creat timer for the alert
     //after ten seconds the alert is auto dismissed and the next question appears
 
     //create a question timer
-        //if user guesses correctly dimiss te time, display the correct alert, reset timer for next question
-        //if user runs out of time alert that they ran out of time, 
-        //display the correct answer, 
-        //call alert timer
+    //if user guesses correctly dimiss te time, display the correct alert, reset timer for next question
+    //if user runs out of time alert that they ran out of time, 
+    //display the correct answer, 
+    //call alert timer
 
     //once the final question hase been displayed and answered show the user their scrore
-
-    //show an option to restart the game through a button click that DOES NOT refresh the page
-
-
-
+    function createInput() {
+        var $input = $('<input type="button" value="Replay" />');
+        $input.appendTo($("body"));
+    }
+    for (i = 0; i < questions.length; i++) {
+        if (i == 7) {
+            $('#win').html("Win: " + win);
+            $('#loss').html("Loss: " + loss);
+            //show an option to restart the game through a button click that DOES NOT refresh the page
+            createInput();
+        }
+    }
 };
