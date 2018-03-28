@@ -1,82 +1,54 @@
 /*jshint esversion: 6 */
-//Global variables
-var win = 0;
-var loss = 0;
-var totalNumQs = 8;
-var counter;
-
-
 window.onload = function () {
+    //Global variables
+    //Score
+    var win = 0;
+    var loss = 0;
+    //Question
+    var questionCounter = questionArray[0];
+    //Timer
+    var timeRemaining = 30;
+    var timerRunning = true;
+
+
+
     //8 random questions with answers
-    var questions = {
-        question1: [{
-            question: "what color is the sky?",
-            guess: ["Green", "Red", "Orange", "Blue"],
-            answer: "Blue"
-        }]/*,
-        question2: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question3: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question4: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question5: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question6: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question7: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }],
-        question8: [{
-            question: "",
-            guess: "",
-            answer: ""
-        }]*/
-    };
-    console.log(questions.question1[0].question);
+    var questionArray = [{
+        question: "what color is the sky?",
+        guess: ["Green", "Red", "Orange", "Blue"],
+        answer: "Blue"
+    }, {
+        question: "What color is the moon?",
+        guess: ["White", "Green", "Yellow", "Pink"],
+        answer: "White"
+    }];
 
-//populate guesses to chose from
-    for (i = 0; i < 4; i++) {
-        
-        console.log(questions.question1[0].guess[i]);
+    //console.log(questionArray[0].question);
+    //console.log(questionArray[0].guess);
+    //console.log(questionArray[0].answer);
+    //populate questions and realted guesses
+    for (i = 0; i < questionArray.length; i++) {
+        $(".lead").text(questionArray[i].question);
+        //console.log(questionArray[i].question);
+        $("#1").text(questionArray[i].guess[0]);
+        $("#2").text(questionArray[i].guess[1]);
+        $("#3").text(questionArray[i].guess[2]);
+        $("#4").text(questionArray[i].guess[3]);
+        //console.log(questionArray[i].guess[0]);
+        //console.log(questionArray[i].guess[1]);
+        //console.log(questionArray[i].guess[2]);
+        //console.log(questionArray[i].guess[3]);
+        counter = i;
     }
-    console.log(questions.question1[0].answer);
-
-    //pupulate area with random questions
-    $(".lead").text(questions.question1[0].question);
-
-    //populate guesses to chose from
-    $("#1").text(questions.question1[0].guess[0]);
-    $("#2").text(questions.question1[0].guess[1]);
-    $("#3").text(questions.question1[0].guess[2]);
-    $("#4").text(questions.question1[0].guess[3]);
 
     //need event listener for button click to track if the user clicks the correct button or not
     $("#1,#2,#3,#4").on("click", function () {
         //if users selects correct answer Alert they guessed correctly else alert incorrect and show correct answer
-        if (this.id == '4') {
-            alert("correct " + questions.question1[0].guess[3]);
+        if (this.id == questionArray[counter].answer) {
+            alert("correct " + questionArray[counter].answer);
             win++;
-
         } else {
-            alert("incorrect " + questions.question1[0].guess[0]);
+            alert("incorrect " + questionArray[counter].answer);
             loss++;
         }
     });
@@ -94,7 +66,7 @@ window.onload = function () {
         var $input = $('<input type="button" value="Replay" />');
         $input.appendTo($("body"));
     }
-    for (i = 0; i < questions.length; i++) {
+    for (i = 0; i < questionArray.length; i++) {
         if (i == 7) {
             $('#win').html("Win: " + win);
             $('#loss').html("Loss: " + loss);
@@ -102,4 +74,8 @@ window.onload = function () {
             createInput();
         }
     }
+    //window on load end    
 };
+
+
+
