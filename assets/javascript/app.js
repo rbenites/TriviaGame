@@ -108,16 +108,16 @@ window.onload = function () {
         //                 clockIsRunning = false;
         //                 game();
         //             }else{
-    //         var endGame=
-    //         "<div><h1>Game Over</h1></div>"+
-    //         "<div><h2>Correct: "+correct+"</h2></div>"+
-    //         "<div><h2>Incorrect: "+incorrect+"</h2></div>";
-    //         $("#action").html(gameHTML);
-    //     }
-    //     //         });
-    // }
-    // if (count == 8) {
-    //     $("#action").html("Game Over!");
+        //         var endGame=
+        //         "<div><h1>Game Over</h1></div>"+
+        //         "<div><h2>Correct: "+correct+"</h2></div>"+
+        //         "<div><h2>Incorrect: "+incorrect+"</h2></div>";
+        //         $("#action").html(gameHTML);
+        //     }
+        //     //         });
+        // }
+        // if (count == 8) {
+        //     $("#action").html("Game Over!");
     }
     //need to update code to dynmicaly add in all the buttons/guesses
 
